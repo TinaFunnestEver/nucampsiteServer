@@ -5,23 +5,22 @@ require('mongoose-currency').loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
 const commentSchema = new Schema({
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
     rating: {
         type: Number,
-        min: 5,
+        min: 1,
         max: 5,
         required: true
     },
     text: {
         type: String,
         required: true
-    },
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }
-}, {
-    timestamps: true
-});
+    }  
+},{timestamps: true}
+);
 
 const campsiteSchema = new Schema({
     name: {
